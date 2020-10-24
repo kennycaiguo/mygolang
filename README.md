@@ -23,3 +23,22 @@ func main() {
 	a:=625
 	fmt.Printf("%d的平方根是%d",a,mySqrt1(a))
 }
+
+#结构体的匿名字段的使用
+package main
+
+import "fmt"
+
+type person struct{
+	string
+	int
+}
+func main() {
+	p1:=person{
+		"kenny",
+		35,
+	}
+	
+   fmt.Printf("my name is %s,i am %d!",p1.string,p1.int)
+	
+}
