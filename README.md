@@ -43,7 +43,7 @@ func main() {
 	
 }
 
-# golang 结构体嵌套实例
+# golang 结构体嵌套实例，写法1
 package main
 
 import "fmt"
@@ -74,5 +74,38 @@ func main() {
 	fmt.Printf("my address is %s,%s\n",p1.address.province,p1.address.city)
 }
 结果：
+my name is kenny,i am 35!
+my address is 广东省,东莞市
+
+## 结构体嵌套实例，写法2
+package main
+
+import "fmt"
+
+type Address struct{
+	province string
+	city     string
+}
+type person struct{
+	 name string
+	 age   int
+	 address Address
+}
+
+func main() {
+	 
+	p1:=person{
+		name:"kenny",
+		age:35,
+		address:Address{
+	    "广东省",
+		"东莞市",
+	  },
+		
+	}
+	
+   fmt.Printf("my name is %s,i am %d!\n",p1.name,p1.age)
+	fmt.Printf("my address is %s,%s\n",p1.address.province,p1.address.city)
+}
 my name is kenny,i am 35!
 my address is 广东省,东莞市
