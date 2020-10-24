@@ -24,7 +24,7 @@ func main() {
 	fmt.Printf("%d的平方根是%d",a,mySqrt1(a))
 }
 
-#结构体的匿名字段的使用
+# 结构体的匿名字段的使用
 package main
 
 import "fmt"
@@ -42,3 +42,37 @@ func main() {
    fmt.Printf("my name is %s,i am %d!",p1.string,p1.int)
 	
 }
+
+# golang 结构体嵌套实例
+package main
+
+import "fmt"
+
+type Address struct{
+	province string
+	city     string
+}
+type person struct{
+	 name string
+	 age   int
+	 address Address
+}
+
+func main() {
+	addr:=Address{
+	    "广东省",
+	    "东莞市",
+	}
+	p1:=person{
+		name:"kenny",
+		age:35,
+		address:addr,
+		
+	}
+	
+   fmt.Printf("my name is %s,i am %d!\n",p1.name,p1.age)
+	fmt.Printf("my address is %s,%s\n",p1.address.province,p1.address.city)
+}
+结果：
+my name is kenny,i am 35!
+my address is 广东省,东莞市
