@@ -109,3 +109,39 @@ func main() {
 }
 my name is kenny,i am 35!
 my address is 广东省,东莞市
+
+# 匿名嵌套结构体实例
+package main
+
+import "fmt"
+
+type Address struct{
+	province string
+	city     string
+}
+type person struct{
+	 name string
+	 age   int
+     Address
+}
+
+func main() {
+	 
+	p1:=person{
+		name:"kenny",
+		age:35,
+		Address:Address{
+	    "广东省",
+		"东莞市",
+	  },
+		
+	}
+	
+   fmt.Printf("my name is %s,i am %d!\n",p1.name,p1.age) //使用匿名嵌套结构体的好处：可以简化操作
+   fmt.Printf("my address is %s,%s\n",p1.province,p1.city)
+}
+
+结果：
+my name is kenny,i am 35!
+my address is 广东省,东莞市
+
