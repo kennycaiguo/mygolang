@@ -5,6 +5,22 @@
 # <a href="http://sinhub.cn/2019/12/use-golang-connect2oracle-on-windows/">golang 操作Oracle数据库</a>
 # <a href="https://article.itxueyuan.com/e9DL7">golang 操作Oracle数据库2</a>
 
+# golang 读取文本文件内容
+func readTextFile(path string) {
+	f,_:=os.OpenFile(path,os.O_RDONLY,0666)
+	var content []byte
+	var tmp = make([]byte,128)
+	for{
+		n,err:=f.Read(tmp)
+		if err==io.EOF{
+			fmt.Println("read finished")
+			break
+		}
+		content = append(content,tmp[:n]...)
+	}
+    fmt.Printf("file content:%s",string(content))
+}
+
 # golang 实现求整数的平方根
 package main
 
