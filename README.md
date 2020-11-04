@@ -38,7 +38,8 @@ func insertcontent(n int,content string,path string)  {
 	strRemain:=string(remain)
 	strAll:=strStart+content+strRemain
 	f.WriteString(strAll)
-
+        f.Close()
+	
 }
 func main() {
 	/*f,_:=os.OpenFile("hello.txt",os.O_RDWR,0666)
