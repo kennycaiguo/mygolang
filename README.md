@@ -4,7 +4,8 @@
 # <a href="https://www.runoob.com/go/go-recursion.html">golang中函数的递归调用</a>
 # <a href="http://sinhub.cn/2019/12/use-golang-connect2oracle-on-windows/">golang 操作Oracle数据库</a>
 # <a href="https://article.itxueyuan.com/e9DL7">golang 操作Oracle数据库2</a>
-
+# <a href="https://juejin.im/post/6844904122143997965">golang高性能日志库zap配置示例</a>
+# <a href="https://juejin.im/post/6844904099788357639">关于收集，标准化和集中化处理Golang日志的一些建议</a>
 # golang 读取文本文件内容
 func readTextFile(path string) {
 	f,_:=os.OpenFile(path,os.O_RDONLY,0666)
