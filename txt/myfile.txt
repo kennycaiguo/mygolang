@@ -1,0 +1,4 @@
+hello ,this file iscreated by golang!
+golang is a young young programming language
+i am learning golang!
+golang has a very bright future!!!
