@@ -1,0 +1,6 @@
+windows 安装redis
+下载 https://github.com/microsoftarchive/redis/releases
+点击msi文件安装，路径C:\Program Files\Redis，端口：6379，记得勾选添加环境变量的选项
+使用方法：
+端口cmd窗口，输入：redis-cli
+
