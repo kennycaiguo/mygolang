@@ -1,0 +1,137 @@
+Redis 常用命令整理
+Redis是一个基于键值对的内存数据库，在实际的开发过程中，其应用非常的广泛。今天就先来看一看Redis的一些命令
+
+一、Redis常用管理命令整理：
+查看Redis的相关信息：info
+清空Redis数据的键值对：
+清空当前database的键值对：flushdb
+清空全部database的键值对：flushall
+查看当前database中键值对的数量：dbsize
+手动触发的Redis持久化操作：save
+退出当前的连接：quit
+查看当前日志：monitor
+二、Redis常用键命令整理：
+保存键值对：
+普通设置：
+set <key> <value>
+一次性设置多个键值对：
+mset <key1> <value1> [<key2> <value2> [<key3> <value3> [...]]]
+获取键值对：
+普通获取：
+get <key>
+一次性获取多个键值对：
+mget <key1> [<key2> [<key3> [...]]]
+获取字符串值的子段：
+getrange <key> <begin-index-included> <end-index-included>
+设置一个新值，并返回其原始值：
+getset <key> <new-value>
+删除键值对：
+del <key>
+返回1表示删除成功，0表示失败
+判断<key>是否存在：
+exists <key>
+返回1表示删除成功，0表示失败
+查看命令的剩余过期时间：
+ttl <key>
+ttl：Time To Leave，单位是秒
+返回时-1表示这个key没有过期时间
+设置一个key的过期时间：
+设置已经存在的<key>的过期时间：
+expire <key> <expire-time-in-seconds>
+设置新<key>的过期时间：
+setex <key> <expire-time-in-seconds> <value>
+psetex <key> <expire-time-in-milliseconds> <value>
+返回值是-2的时候表示这个<key>已经不存在了
+获取一个<key>对应的值的数据类型：
+type <key>
+随机从当前的database中获取一个<key>：
+randomkey
+重命名<key>：
+rename <old-key> <new-key>
+以nx结尾的命令（下面不再罗列）：
+<cmd>nx <options>
+nx表示not exists
+如setnx
+范例：renamenx k1 k2表示当k2不存在的时候进行rename操作
+以m开头的命令：
+m<cmd> <options>
+m表示multi，批量操作
+如mset，msetnx（以m开头，nx结尾的命令有原子性的特点）
+见1
+三、Redis常用常用数据类型特有命令整理：
+字符串
+计算<key>对应的字符串值的长度：strlen <key>
+在<key>对应的字符串值上继续拼接：append <key> <string-to-append>
+数字
+计算<key>对应的数字值加/减1的结果：incr/decr <key>
+计算<key>对应的数字值加/减<step>的结果：incrby/decrby <key> <step>
+Hash
+设置hash：
+hset <field> <key> <value>
+判断某个<field>的<key>是否存在：
+hexists <field> <key> <field>
+获取<field>的<key>的值：
+hget <field> <key>
+获取<field>中所有的<key>和<value>：
+hgetall <field>
+获取<field>的所有的<key>：
+hkeys <field>
+获取<field>的所有的<values>：
+hvals <field>
+获取<field>的键值对的个数：
+hlen <field>
+根据<key>列表获取<field>中指定<key>的值：
+hmget <field> <key1>[ <key2>[ <key3>[ ...]]]
+在<field>中设置多个<key><value>：
+hmset <field> <key1> <value1>[ <key2> <value2>[ <key3> <value3>[ ...]]]
+删除<field>的<key><value>：
+hdel <field> <key1>[ <key2>[ <key3> [...]]]
+list
+添加元素到list的头部：
+lpush <list-name> <ele1>[ <ele2>[ <ele3>[ ...]]]
+删除list的元素，lpop是从头部开始删除，rpop从尾部移除：
+lpop <list-name> <ele1>[ <ele2>[ <ele3>[ ...]]]
+单独设置list的元素：
+lset <list-name> <index> <value>
+获取list的长度：
+llen <list-name>
+根据一个list生成另一个list：
+lrange <list1-name> <start-index-included> <start-index-included> 
+根据索引获取list的元素：
+lindex <list-name> <index>
+set(使用hash实现)
+添加元素到set：
+sadd <set-name> <ele1>[ <ele2>[ <ele3>[ ...]]]
+获取set元素的数量：
+scard <set-name>
+重命名set名称：
+rename <old-set-name> <new-set-name>
+获取set所有成员：
+smembers <set-name>
+计算两个集合的差集：
+sdiff <set-name1> <set-name2>
+计算两个集合的交集：
+sinter <set-name1> <set-name2>
+计算两个集合的并集：
+sunion <set-name1> <set-name2>
+随机取出两个集合的：
+srandmember <set-name>
+判断元素在不在集合中：
+sismember <set-name> <ele>
+移除并返回随机的set成员：
+spop <set-name>
+zset(使用hash实现，元素不能重复，分数可以重复)
+添加元素到zset：
+zadd <zset-name> <score1> <ele1>[ <score2> <ele2>[ <score3> <ele3>[ ...]]]
+获取zset的元素个数：
+zcard <zset-name>
+获取zset中元素分数：
+zscore <zset-name> <ele>
+获取zset某个分数区间的元素个数：
+zcount <zset-name> <begin-score-include> <end-score-include>
+获取zset的某个元素的索引：
+zrank <zset-name> <ele>
+加减zset的某个元素的score：
+zincrby <zset-name> <score> <ele>
+按照zset中元素的排序获取某个区间段的元素，也可以同时返回其分数：
+zrank <zset-name> <begin-index-include> <end-index-include>[ withscores]
