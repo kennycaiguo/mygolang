@@ -1,0 +1,5 @@
+进入D:\tools\kafka_2.13-2.7.0\bin\windows目录
+先启动zookeeper
+zookeeper-server-start.bat ..\..\config\zookeeper.properties
+然后启动kafka
+kafka-server-start.bat ..\..\config\server.properties
