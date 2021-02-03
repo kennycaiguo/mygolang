@@ -1,0 +1,24 @@
+问题
+直接使用
+
+go get -u go.etcd.io/etcd/clientv3
+
+安装 go etcd clientv3，直接使用go get是下载最新的代码，没有经过严格测试。
+
+可能会遇到如下问题：（或者其它错误）
+
+go get -u go.etcd.io/etcd/clientv3
+# go.etcd.io/etcd/clientv3/balancer/picker
+workspace/go_projects/src/go.etcd.io/etcd/clientv3/balancer/picker/err.go:25:9: cannot use &errPicker literal (type *errPicker) as type Picker in return argument:
+	*errPicker does not implement Picker (wrong type for Pick method)
+		have Pick(context.Context, balancer.PickInfo) (balancer.SubConn, func(balancer.DoneInfo), error)
+		want Pick(balancer.PickInfo) (balancer.PickResult, error)
+workspace/go_projects/src/go.etcd.io/etcd/clientv3/balancer/picker/roundrobin_balanced.go:33:9: cannot use &rrBalanced literal (type *rrBalanced) as type Picker in return argument:
+	*rrBalanced does not implement Picker (wrong type for Pick method)
+		have Pick(context.Context, balancer.PickInfo) (balancer.SubConn, func(balancer.DoneInfo), error)
+		want Pick(balancer.PickInfo) (balancer.PickResult, error)
+
+解决办法：
+   下载源码，解压缩，修改名字etcd，在GOPATH下面创建一个名叫go.etcd.io
+    把etcd放到go.etcd.io下面，ok
+    现在，可以正常使用了。
