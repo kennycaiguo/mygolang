@@ -1,0 +1,11 @@
+下载：https://github.com/etcd-io/etcd/releases，下载Windows的版本
+安装：解压后即可使用
+运行:1.先启动etcd.exe,可以右击选择“以管理员身份运行”
+        2.打开一个新的cmd窗口，cd到eted的安装目录，
+     创建和修改key， 输入命令：etcdctl --endpoints=http://127.0.0.1:2379 put boss "kenny"
+       返回OK，说明成功
+      查询key值 输入命令：etcdctl --endpoints=http://127.0.0.1:2379 get boss 
+       返回：boss
+                 kenny
+     删除key  输入命令：etcdctl --endpoints=http://127.0.0.1:2379 del boss 
+      返回1，说明删除成功，0说明删除失败
