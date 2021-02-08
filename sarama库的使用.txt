@@ -1,0 +1,6 @@
+1.下载：
+linux/mac：
+    go get github.com/Shopify/sarama
+windows：
+    最好使用v1.19，没有gcc依赖
+  

@@ -1,0 +1,13 @@
+1.启动redis命令行工具：
+  a.打开cmd命令行工具
+  b.输入redis-cli
+2.设置key
+>set name kenny
+
+3.获取key
+>get name
+
+4.显示所有key
+>keys *
+
+5.退出:quit
