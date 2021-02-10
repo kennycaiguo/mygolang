@@ -1,0 +1,10 @@
+ 1.GOPATH的路径不要包含src：如：d:\goproj,如果设置了包含src的路径，安装第三方包时会出现安装了找不到的现象
+ 2.使用sqlx也需要go-sql-diver包：
+                             import (
+                                "fmt"
+                                _ "github.com/lib/pq"
+                                "github.com/jmoiron/sqlx"
+                                _ "github.com/go-sql-driver/mysql"
+
+                             )
+ 3.用来接收数据的结构体的字段必须首字母大写，否则sqlx会报错

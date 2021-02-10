@@ -1,0 +1,9 @@
+name=sql
+database=oracle
+maxpoolsize=1000
+
+conf file=./conf/config.ini
+struct=conf.AppConfig
+test=logagent.exe
+welcome=welcome to the app
+hello
